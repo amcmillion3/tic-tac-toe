@@ -48,6 +48,12 @@ div.game-grid > * {
     font-size: 2.5rem;
 }
 
+#grid-0 {
+    border-right: solid black 0.25rem;
+    border-bottom: solid black 0.25rem;
+    place-self: center;
+}
+
 #grid-1 {
     border-right: solid black 0.25rem;
     border-bottom: solid black 0.25rem;
@@ -55,12 +61,12 @@ div.game-grid > * {
 }
 
 #grid-2 {
-    border-right: solid black 0.25rem;
     border-bottom: solid black 0.25rem;
     place-self: center;
 }
 
 #grid-3 {
+    border-right: solid black 0.25rem;
     border-bottom: solid black 0.25rem;
     place-self: center;
 }
@@ -72,13 +78,12 @@ div.game-grid > * {
 }
 
 #grid-5 {
-    border-right: solid black 0.25rem;
     border-bottom: solid black 0.25rem;
     place-self: center;
 }
 
 #grid-6 {
-    border-bottom: solid black 0.25rem;
+    border-right: solid black 0.25rem;
     place-self: center;
 }
 
@@ -88,10 +93,5 @@ div.game-grid > * {
 }
 
 #grid-8 {
-    border-right: solid black 0.25rem;
-    place-self: center;
-}
-
-#grid-9 {
     place-self: center;
 }
