@@ -27,6 +27,7 @@ const playGame = (() => {
             if(gridIndex === "") {
                 gameboardArray.splice(`${e.target.dataset.indexNumber}`, 1, letter)
             }
+            removeListener(e);
         }
         else if(letter === player1.letter) {
             letter = player2.letter;
@@ -34,6 +35,7 @@ const playGame = (() => {
             if(gridIndex === "") {
                 gameboardArray.splice(`${e.target.dataset.indexNumber}`, 1, letter)
             }
+            removeListener(e);
         }
         else if(letter === player2.letter) {
             letter = player1.letter;
@@ -41,6 +43,7 @@ const playGame = (() => {
             if(gridIndex === "") {
                 gameboardArray.splice(`${e.target.dataset.indexNumber}`, 1, letter)
             }
+            removeListener(e);
         }
         gameboard.render();
     }
@@ -49,4 +52,8 @@ const playGame = (() => {
     const addListeners = (() => {
         gridBoxes.forEach((gridBox) => gridBox.addEventListener("click", playRound));
     })();
+
+    const removeListener = (e) => {
+        e.target.removeEventListener("click", playRound);
+    };
 })();
