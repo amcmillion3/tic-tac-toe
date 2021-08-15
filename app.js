@@ -6,6 +6,15 @@ const gameboard = (function () {
             gridBox.innerHTML = `<p>${gameboard.gameboardArray[i]}</p>`;
         }
     };
+    // const {addListeners} = playGame();
+    const resetButton = document.getElementById("new-game-button");
+    resetButton.addEventListener("click", () => {
+        for(let i=0; i < gameboardArray.length; i++) {
+            gameboardArray[i] = "";
+        }
+        render();
+        playGame.addListeners();
+    })
     return {gameboardArray, render};
 })();
 
@@ -49,11 +58,14 @@ const playGame = (() => {
     }
     const gridBoxes = Array.from(document.getElementsByClassName("game-grid"));
 
-    const addListeners = (() => {
+    function addListeners() {
         gridBoxes.forEach((gridBox) => gridBox.addEventListener("click", playRound));
-    })();
+    };
+    addListeners();
 
     const removeListener = (e) => {
         e.target.removeEventListener("click", playRound);
     };
+    return {addListeners};
 })();
+
