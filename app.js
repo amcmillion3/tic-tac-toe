@@ -6,7 +6,7 @@ const gameboard = (function () {
             gridBox.innerHTML = `<p>${gameboard.gameboardArray[i]}</p>`;
         }
     };
-    // const {addListeners} = playGame();
+    const status = document.getElementById("update-status");
     const resetButton = document.getElementById("new-game-button");
     resetButton.addEventListener("click", () => {
         for(let i=0; i < gameboardArray.length; i++) {
@@ -14,6 +14,7 @@ const gameboard = (function () {
         }
         render();
         playGame.addListeners();
+        status.textContent = "WHO WILL WIN? NO ONE KNOWS!";
     })
     return {gameboardArray, render};
 })();
@@ -55,7 +56,22 @@ const playGame = (() => {
             removeListener(e);
         }
         gameboard.render();
+        checkWin();
     }
+
+    const status = document.getElementById("update-status");
+    function checkWin() {
+        if(gameboardArray[0] === gameboardArray[1] && gameboardArray[1] === gameboardArray[2] && gameboardArray[0] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[3] === gameboardArray[4] && gameboardArray[4] === gameboardArray[5] && gameboardArray[3] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[6] === gameboardArray[7] && gameboardArray[7] === gameboardArray[8] && gameboardArray[6] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[0] === gameboardArray[3] && gameboardArray[3] === gameboardArray[6] && gameboardArray[0] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[1] === gameboardArray[4] && gameboardArray[4] === gameboardArray[7] && gameboardArray[1] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[2] === gameboardArray[5] && gameboardArray[5] === gameboardArray[8] && gameboardArray[2] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[0] === gameboardArray[4] && gameboardArray[4] === gameboardArray[8] && gameboardArray[0] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[2] === gameboardArray[4] && gameboardArray[4] === gameboardArray[6] && gameboardArray[2] !== ""){status.textContent = `${currentPlayer} wins!`; letter = ""; return;}
+        if(gameboardArray[0] !== "" && gameboardArray[1] !== "" && gameboardArray[2] !== "" && gameboardArray[3] !== "" && gameboardArray[4] !== "" && gameboardArray[5] !== "" && gameboardArray[6] !== "" && gameboardArray[7] !== "" && gameboardArray[8] !== "") {status.textContent = "DRAW!"; letter = ""; return;}
+    }
+
     const gridBoxes = Array.from(document.getElementsByClassName("game-grid"));
 
     function addListeners() {
